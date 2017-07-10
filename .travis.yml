@@ -43,7 +43,7 @@ script:
   - for file in $(find . -type f -name "notebooks/*.ipynb"); do
       jupyter nbconvert --template=tests/data/strip_markdown.tpl --to python $file;
     done;
-  - PYTHONPATH=$PWD:$PYTHONPATH pytest --cov=./ --pep8;
+  - PYTHONPATH=$PWD:$PYTHONPATH pytest --cov=./ --pep8 tests/test-notebooks/test_notebooks.py;
 
 after_success:
   - coveralls
